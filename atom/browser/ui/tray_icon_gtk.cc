@@ -40,7 +40,7 @@ void TrayIconGtk::SetImage(const gfx::Image& image) {
                            indicators_count),
         image.AsImageSkia(), toolTip));
   } else {
-    icon_.reset(new libgtkui::Gtk2StatusIcon(image.AsImageSkia(), toolTip));
+    icon_.reset(new libgtkui::GtkStatusIcon(image.AsImageSkia(), toolTip));
   }
   icon_->set_delegate(this);
 }
