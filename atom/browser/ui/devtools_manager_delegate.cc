@@ -100,7 +100,7 @@ void DevToolsManagerDelegate::HandleCommand(
     std::unique_ptr<base::DictionaryValue> command,
     const std::string& message,
     NotHandledCallback callback) {
-  std::move(callback).Run(nullptr, message);
+  std::move(callback).Run(std::move(command), message);
 }
 
 scoped_refptr<content::DevToolsAgentHost>
