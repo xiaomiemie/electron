@@ -275,7 +275,8 @@ int URLRequestFetchJob::ReadRawData(net::IOBuffer* dest, int dest_size) {
   int bytes_read =
       BufferCopy(write_buffer_.get(), write_num_bytes_, dest, dest_size);
   ClearWriteBuffer();
-  std::move(write_callback_).Run(bytes_read);
+  if (!write_callback_.is_null())
+    std::move(write_callback_).Run(bytes_read);
   return bytes_read;
 }
 
